@@ -66,11 +66,7 @@ export default function PasskeyWalletHistory({ history }: { history?: PasskeyHis
     <section className="mt-8 text-left" aria-label={translate('screens/home', 'History')}>
       <h2 className="text-lg font-bold">{translate('screens/home', 'History')}</h2>
       {!history ? (
-        <div aria-label={translate('screens/home', 'Loading transactions')}>
-          {[0, 1, 2].map((i) => (
-            <div key={i} className="my-3 h-12 animate-pulse rounded bg-dfxGray-300" />
-          ))}
-        </div>
+        <p className="py-5 text-dfxGray-700">{translate('screens/home', 'Not available yet')}</p>
       ) : (
         <>
           {history.items.length === 0 && !history.hasMore && (

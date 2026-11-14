@@ -161,7 +161,7 @@ export default function PasskeyWalletCard({
         >
           <span className="sr-only">{t('Total balance')} </span>
           {formatted === undefined ? (
-            <span aria-label={t('Loading balance')} className="block h-12 w-48 animate-pulse rounded bg-white/20" />
+            <span className="block text-xl font-semibold text-white/80">{t('Not available yet')}</span>
           ) : (
             <span className="whitespace-nowrap">
               <span className="mr-2 text-xl">{currentSymbol === 'EUR' ? '€' : 'CHF'}</span>

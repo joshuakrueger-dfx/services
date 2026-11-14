@@ -688,7 +688,7 @@ run does not prove for each one; the taxonomy and cross-repository entries live 
 - **`src/__tests__/connect-passkey.test.tsx`: wallet-package substitute.**
   `src/__tests__/connect-passkey.test.tsx` replaces `@dfx.swiss/wallet`. `passkeyDiagnostic` is a stub that returns `stage`, `outcome`, `prf`, `os` and `clientCapabilities` from its input. A green diagnostic test does not prove the wallet package sanitizes that record. A green diagnostic test does not prove a real platform report. A green run does not prove the rest of the real wallet package.
 - **`src/__tests__/connect-passkey.test.tsx`: SDK substitute.**
-  The test replaces `@dfx.swiss/react`, its auth definitions, `useSessionContext` and `useAuthContext`; a green run does not prove the real SDK or those hooks.
+  The test replaces `@dfx.swiss/react`, its auth definitions and `useSessionContext`; a green run does not prove the real SDK or those hooks.
 - **`src/__tests__/connect-passkey.test.tsx`: component-library substitute.**
   The component library is replaced; a green run does not prove the published components.
 - **`src/__tests__/connect-passkey.test.tsx`: application-hook substitutes.**
@@ -727,10 +727,6 @@ run does not prove for each one; the taxonomy and cross-repository entries live 
   The in-app test uses `history.replaceState` because jsdom drops the fragment when assigning `location.href`; a green run does not prove that assignment preserves the fragment in a browser.
 - **`src/__tests__/connect-passkey.test.tsx`: stubbed ceremony and desk.**
   WebAuthn remains stubbed while tests exercise the idle, choice, email, unknown and error cards, Close during a hanging login, one Bitcoin link and passkey revocation; a green run does not prove Close cancels WebAuthn, the server stored the mainnet login address, or an existing Bitcoin row came from the API.
-- **`src/__tests__/connect-passkey.test.tsx`: DFX account substitute.**
-  `useAuthContext` returns an in-memory session. A green run proves a stored login keeps
-  `session.account` on the tab session and keeps no account when that session is missing. It does not
-  prove a real DFX login.
 - **The history unit test replaces the scroll observer.**
   `src/__tests__/passkey-wallet-history.test.tsx` replaces `IntersectionObserver`; a green run does not prove a real scroll observer. Its settings-context stub is declared above.
 - **`src/__tests__/layout.test.tsx`: replaced shell modules.**

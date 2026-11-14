@@ -52,9 +52,11 @@ describe('Passkey wallet history', () => {
     else expect(value).not.toHaveClass('text-dfxGreen-300');
   });
 
-  it('shows a loading state without a source and an honest empty state', () => {
-    const { rerender } = render(<PasskeyWalletHistory />);
-    expect(screen.getByLabelText('Loading transactions').children).toHaveLength(3);
+  it('shows that history is not available without a source and an honest empty state', () => {
+    const { container, rerender } = render(<PasskeyWalletHistory />);
+    expect(screen.getByText('Not available yet')).toBeVisible();
+    expect(screen.queryByLabelText('Loading transactions')).toBeNull();
+    expect(container.querySelector('.animate-pulse')).toBeNull();
     rerender(<PasskeyWalletHistory history={{ items: [], hasMore: false, loadMore: async () => undefined }} />);
     expect(screen.getByText('No transactions yet.')).toBeInTheDocument();
   });

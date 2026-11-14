@@ -339,7 +339,7 @@ describe('ConnectPasskey', () => {
     try {
       setOpenPasskey(authResult('unlocked', ring(SEED)) as unknown as OpenPasskey);
       renderPasskey();
-      expect(screen.getByLabelText('Loading transactions')).toBeInTheDocument();
+      expect(screen.getAllByText('Not available yet')).toHaveLength(2);
       expect(screen.queryByText('No transactions yet.')).not.toBeInTheDocument();
     } finally {
       process.env.NODE_ENV = previous;
@@ -357,7 +357,7 @@ describe('ConnectPasskey', () => {
   it('shows a balance placeholder or the supplied balance and opens send', () => {
     setOpenPasskey(authResult('unlocked', ring(SEED)) as unknown as OpenPasskey);
     const view = render(<PasskeyDesk onCancel={mockOnCancel} onRevoked={mockOnSwitch} />);
-    expect(screen.getByLabelText('Loading balance')).toBeInTheDocument();
+    expect(screen.getAllByText('Not available yet')).toHaveLength(2);
     view.rerender(
       <PasskeyDesk onCancel={mockOnCancel} onRevoked={mockOnSwitch} balance={{ chf: 1234.5, eur: 1000 }} />,
     );

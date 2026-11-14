@@ -16,11 +16,12 @@ it('renders balance, currency controls and wallet toggles', () => {
   const onHome = jest.fn();
   const props = { currency: 'CHF' as const, onCurrencyChange, expanded: false, onExpandedChange, onSettings, onHome };
   const view = render(<PasskeyWalletCard {...props} />);
-  expect(screen.getByLabelText('Loading balance')).toBeInTheDocument();
+  expect(screen.getByText('Not available yet')).toBeVisible();
+  expect(view.container.querySelector('.animate-pulse')).toBeNull();
   expect(screen.getByRole('group', { name: 'Currency' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'CHF' })).toHaveAttribute('aria-pressed', 'true');
   fireEvent.click(screen.getByRole('button', { name: 'Settings' }));
-  fireEvent.click(screen.getByRole('button', { name: 'Total balance Loading balance' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Total balance Not available yet' }));
   fireEvent.click(screen.getByRole('button', { name: 'Show wallet' }));
   fireEvent.click(screen.getByRole('button', { name: 'EUR' }));
   expect(onSettings).toHaveBeenCalledTimes(1);
